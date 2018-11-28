@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-musiclibrary-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres-musiclibrary
+  template:
+    metadata:
+      labels:
+        app: postgres-musiclibrary
+    spec:
+      containers:
+        - image: centos/postgresql-94-centos7
+          name: postgres-musiclibrary
+          env:
+            - name: POSTGRESQL_USER
+              value: dbuser
+            - name: POSTGRESQL_PASSWORD
+              value: postgres
+            - name: POSTGRESQL_DATABASE
+              value: musiclibrary
+          ports:
+          - containerPort: 5432
+            protocol: TCP
