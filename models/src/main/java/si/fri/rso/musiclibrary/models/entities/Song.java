@@ -30,6 +30,9 @@ public class Song {
     @Column(name = "year")
     private String songyear;
 
+    @Column(name = "genre")
+    private String genre;
+
     @Transient
     private List<Order> orders;
 
@@ -70,6 +73,14 @@ public class Song {
 
     public void setYear(String address) {
         this.songyear = songyear;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 
     public List<Order> getOrders() {
